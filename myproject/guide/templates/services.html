@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2>Что вы получаете, используя наш сервис</h2>
+        <p class="lead">Быстрый доступ к информации о бытовой технике и сервисах компании</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Поиск по серийному номеру или QR-коду</h5>
+                    <p class="card-text">
+                        Просто введите серийный номер или отсканируйте QR-код — и получите полную информацию о вашем устройстве: модель, характеристики, статус, историю перемещений.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Информация о продуктах</h5>
+                    <p class="card-text">
+                        Ознакомьтесь с каталогом бытовой техники, узнайте о характеристиках, типах продукции и моделях. Удобный и структурированный справочник для вашего удобства.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Обратная связь</h5>
+                    <p class="card-text">
+                        Остались вопросы? Напишите нам через форму обратной связи. Ваше сообщение попадёт напрямую в нашу службу поддержки, и мы обязательно ответим.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+        <p>Сервис разработан для удобства клиентов. Вся информация — в одном месте.</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary mt-2">Связаться с нами</a>
+    </div>
+</div>
+{% endblock %}

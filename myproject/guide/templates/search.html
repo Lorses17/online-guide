@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Поиск{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Поиск товара по серийному номеру</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Найти</button>
+    </form>
+
+    {% if product %}
+        <div class="mt-4">
+            <h3>{{ product.model.product_type.name }}, модель {{ product.model.name }}</h3>
+            <p><strong>Серийный номер:</strong> {{ product.serial_number }}</p>
+            <p><strong>Описание типа техники:</strong> {{ product.model.product_type.description|default:"Нет описания" }}</p>
+            <p><strong>Дата создания:</strong> {{ product.created_at }}</p>
+
+            <h4>Гарантия:</h4>
+            {% if product.warranty %}
+                <p><strong>Начало:</strong> {{ product.warranty.start_date }}</p>
+                <p><strong>Окончание:</strong> {{ product.warranty.end_date }}</p>
+                <p><strong>Условия:</strong> {{ product.warranty.terms|default:"Нет условий" }}</p>
+            {% else %}
+                <p>Гарантия отсутствует.</p>
+            {% endif %}
+
+            <h4>История перемещений:</h4>
+            {% if product.movements.exists %}
+                <ul>
+                    {% for movement in product.movements.all %}
+                        <li>
+                            <strong>{{ movement.get_move_type_display }}</strong> в {{ movement.location }} ({{ movement.date }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>История перемещений отсутствует.</p>
+            {% endif %}
+        </div>
+    {% elif form.is_bound and not product %}
+        <div class="alert alert-warning mt-3">Товар не найден</div>
+    {% endif %}
+</div>
+{% endblock %}

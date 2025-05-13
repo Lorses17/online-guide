@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="mb-4">Добро пожаловать в справочник бытовой техники!</h1>
+
+        <img src="{% static 'img/biznes.png' %}" alt="Наша компания" class="img-fluid rounded mb-4" style="max-height: 400px;">
+
+        <p class="lead">
+            Мы — команда профессионалов, предоставляющих актуальную информацию о бытовой технике, её обслуживании, перемещениях и гарантии.
+        </p>
+
+        <p>
+            Узнайте больше или <a href="{% url 'contact' %}">свяжитесь с нами</a> — мы всегда готовы помочь!
+        </p>
+    </div>
+</div>
+{% endblock %}
